@@ -10,5 +10,10 @@ foreach($cases as $caseTitle => $case){
     echo ' - ['.$case['pass'].'/'.$case['fail'].']' . $caseTitle . "\n";
     foreach ($case['tests'] as $test){
         echo '   * ' . $test['result'] . ' : ' . $test['type'] . '()' . "\n";
+        if ( $test['result'] === 'fail' ) {
+            echo '     ! ' . $test['file'] . ' at ' . $test['line'] . "\n";
+        }
     }
+    echo "\n";
 }
+echo "\n";
