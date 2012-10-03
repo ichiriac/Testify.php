@@ -247,8 +247,11 @@ class Testify{
 		$suiteResults = $this->suiteResults;
 		$cases = $this->stack;
 		
-		include dirname(__FILE__).'/testify.report.php';
-		
+		if (PHP_SAPI === 'cli') {
+			include dirname(__FILE__).'/reports/cli.php';
+		} else {
+			include dirname(__FILE__).'/reports/html.php';
+		}
 		return $this;
 	}
 	
@@ -325,4 +328,3 @@ class Testify{
 
 class TestifyException extends Exception{}
 
-?>
